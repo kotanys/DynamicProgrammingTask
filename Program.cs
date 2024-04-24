@@ -17,9 +17,9 @@ int mx = 0;
 int mxi = -1;
 for (int i = 0; i < A.Length; i++)
 {
-    if (mx < ML[i] + MR[i] - 1)
+    if (mx < ML[i] + MR[^(i+1)] - 1)
     {
-        mx = ML[i] + MR[i] - 1;
+        mx = ML[i] + MR[^(i+1)] - 1;
         mxi = i;
     }
 }
@@ -32,7 +32,7 @@ while (ptr != -1)
     ptr = NL[ptr];
 }
 
-ptr = NR[mxi];
+ptr = NR[^(mxi+1)];
 while (ptr != -1)
 {
     output.Add(A[^(ptr+1)]);
