@@ -24,22 +24,22 @@ for (int i = 0; i < A.Length; i++)
     }
 }
 
-List<int> output = [];
+List<int> OUT = [];
 int ptr = mxi;
 while (ptr != -1)
 {
-    output.Insert(0, A[ptr]);
+    OUT.Insert(0, A[ptr]);
     ptr = NL[ptr];
 }
 
 ptr = NR[^(mxi+1)];
 while (ptr != -1)
 {
-    output.Add(A[^(ptr+1)]);
+    OUT.Add(A[^(ptr+1)]);
     ptr = NR[ptr];
 }
 
-foreach (var item in output)
+foreach (var item in OUT)
 {
     Console.Write(item);
     Console.Write(' ');
@@ -47,20 +47,20 @@ foreach (var item in output)
 
 static void GetL(int[] A, int[] L, int[] N)
 {
-    for (int i = 1; i < A.Length; i++)
+    for (int k = 1; k < A.Length; k++)
     {
         int mj = -1;
-        for (int j = 0; j < i; j++)
+        for (int i = 0; i < k; i++)
         {
-            if (A[i] > A[j] && (mj == -1 || L[j] > L[mj]))
+            if (A[k] > A[i] && (mj == -1 || L[i] > L[mj]))
             {
-                mj = j;
-                N[i] = j;
+                mj = i;
+                N[k] = i;
             }
         }
         if (mj == -1)
-            L[i] = 1;
+            L[k] = 1;
         else 
-            L[i] = L[mj] + 1;
+            L[k] = L[mj] + 1;
     }
 }
